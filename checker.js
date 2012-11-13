@@ -10,25 +10,24 @@ var options = {
 var checkInMseconds = 5000;
 var pass = 0;
 var arrayBuf = [];
-arrayBuf[0] = '';
-arrayBuf[1] = '';
 
 setInterval(function(){
-var req = https.request(options, function(res) {
-  arrayBuf[pass] = '';
+  var req = https.request(options, function(res) {
+    if(3 == pass) pass = 0;
+    arrayBuf[pass] = '';
 
-  res.setEncoding('utf8');
+    res.setEncoding('utf8');
 
-  res.on('data', function (chunk) {
-    arrayBuf[pass]+= chunk;
+    res.on('data', function (chunk) {
+      arrayBuf[pass]+= chunk;
+    });
+    res.on('end', function () {
+      if (arrayBuf[1] != 'undefined' && arrayBuf[0] != arrayBuf[1]) {
+        console.log('Different!');
+      };
+      pass++;
+    });
   });
-  res.on('end', function () {
-    if (arrayBuf[0] != arrayBuf[1]) {
-      console.log('Different!');
-    };
-    pass++;
-  });
-});
 
   req.on('error', function(e) {
     console.log('problem with request: ' + e.message);
