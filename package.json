@@ -1,0 +1,17 @@
+{
+  "name": "nexus4checker",
+  "version": "0.0.1",
+  "description": "This checks the Nexus 4 website and alerts me when the website has been updated",
+  "main": "checker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git@github.com:EhevuTov/nexus4checker.git",
+  "keywords": [
+    "nexus",
+    "checker"
+  ],
+  "author": "James Gosnell",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
